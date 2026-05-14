@@ -64,9 +64,9 @@
   cursor: pointer;
 }
 
-/* .button-row button:hover {
+.button-row button:hover {
   background: var(--accent-strong);
-} */
+}
 
 .button-row button:focus-visible,
 .input-group input:focus-visible {
