@@ -1,13 +1,30 @@
-name: Hello world!
+name: Validar proyecto
 
 on: 
-  push:
+  pull_request:
     branches: [main]
 
 jobs:
-  hello:
+  validate:
     runs-on: ubuntu-latest
 
     steps:
-      - name: mostrar mensaje
-        run: echo "hola soy un mensaje"
+      - name: descargar el código
+        run: actions/checkout@v6
+
+      - name: Instalar node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+
+      - name: Instalar dependencias
+        run: npm install
+
+      - name: Ejecutar Linter
+        run: npm run lint
+
+      - name: Ejecutar test
+        run: npm test
+        
+      - name: Ejecutar Build
+        run: npm run build
