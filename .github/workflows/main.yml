@@ -1,6 +1,6 @@
 name: Validar proyecto
 
-on: 
+on:
   pull_request:
     branches: [main]
 
@@ -9,10 +9,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: descargar el código
-        run: actions/checkout@v6
+      - name: Descargar el código
+        uses: actions/checkout@v6
 
-      - name: Instalar node
+      - name: Instalar Node
         uses: actions/setup-node@v6
         with:
           node-version: 24
@@ -20,11 +20,11 @@ jobs:
       - name: Instalar dependencias
         run: npm install
 
-      - name: Ejecutar Linter
+      - name: Ejecutar linter
         run: npm run lint
 
-      - name: Ejecutar test
+      - name: Ejecutar tests
         run: npm test
-        
-      - name: Ejecutar Build
+
+      - name: Comprobar build
         run: npm run build
